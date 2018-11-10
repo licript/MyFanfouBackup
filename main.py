@@ -43,9 +43,9 @@ resp = session_requests.get(login_url, headers=headers_get)
 
 # url_from = BeautifulSoup(resp.content, "lxml").find('input', attrs={'name':'urlfrom'})['value']
 payload ={
-    "loginname": "li2.y@foxmail.com",
-    "loginpass": "li19930427",
-    "token": "5b5c2b15",
+    "loginname": "********",
+    "loginpass": "********",
+    "token": "********",
     "action": "login",
     # 'urlfrom': url_from,
 }
@@ -54,11 +54,13 @@ res = session_requests.post(url, data=payload, headers=headers_login)
 
 # print(res, '\nres')
 
+
 def handle_page(s, url):
     res_home = s.get(url)
     soup = BeautifulSoup(res_home.content, "lxml")
     contents = soup.findAll('span', class_='content')
     for content in contents:
         print(content)
+
 
 handle_page(session_requests, url_home)
