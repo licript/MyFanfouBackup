@@ -43,9 +43,9 @@ resp = session_requests.get(login_url, headers=headers_get)
 
 # url_from = BeautifulSoup(resp.content, "lxml").find('input', attrs={'name':'urlfrom'})['value']
 payload ={
-    "loginname": "********",
-    "loginpass": "********",
-    "token": "********",
+    "loginname": "",
+    "loginpass": "",
+    "token": "",
     "action": "login",
     # 'urlfrom': url_from,
 }
