@@ -39,13 +39,13 @@ headers_login = {
 
 session_requests = requests.session()
 
-resp = session_requests.get(login_url, headers=headers_get)
+# resp = session_requests.get(login_url, headers=headers_get)
 
 # url_from = BeautifulSoup(resp.content, "lxml").find('input', attrs={'name':'urlfrom'})['value']
 payload ={
-    "loginname": "",
-    "loginpass": "",
-    "token": "",
+    "loginname": "****",
+    "loginpass": "****",
+    "token": "7b449665",
     "action": "login",
     # 'urlfrom': url_from,
 }
@@ -55,12 +55,19 @@ res = session_requests.post(url, data=payload, headers=headers_login)
 # print(res, '\nres')
 
 
-def handle_page(s, url):
+def handle_page(s, url, x):
     res_home = s.get(url)
     soup = BeautifulSoup(res_home.content, "lxml")
-    contents = soup.findAll('span', class_='content')
+    contents = soup.select(' ol > li')
     for content in contents:
-        print(content)
+        text = content.text
+        f = open('text.txt', 'a')
+        f.write(text + '\n')
+        if x == 17:
+            f.close()
 
 
-handle_page(session_requests, url_home)
+# handle_page(session_requests, url_home)
+
+for x in range(1, 17):
+    handle_page(session_requests, 'http://fanfou.com/lovelemontea/p.' + str(x) ,x)
